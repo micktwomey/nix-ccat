@@ -1,9 +1,16 @@
 {
   description = "Colorizing cat";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs }:
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+  };
+
+  outputs = { self, nixpkgs, flake-compat }:
     let
       pname = "ccat";
       version = "1.1.0";
